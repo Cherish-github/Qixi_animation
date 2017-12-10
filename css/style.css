@@ -1,0 +1,312 @@
+/*设置所有元素内外边距均为0*/
+* {
+	padding: 0;
+	margin: 0;
+}
+/*去掉ul中li前面默认带的标记*/
+ul,li {
+	list-style-type: none;
+}
+/*设置div容器的样式*/
+#content {
+	width: 100%;
+	height: 100%;
+	/*top: 20%;
+	left: 20%;*/
+	overflow: hidden;
+	position: absolute;
+	/*border: 1px solid #ccc;*/
+}
+/*设置ul的样式*/
+.content_wrap {
+	position: relative;
+}
+/*设置每一个li的样式*/
+.content_wrap > li {
+	/*width: 100%;	代码冗余，去除
+	height: 100%;*/
+	background: #CAE1FF;
+	color: red;
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+/*设置第二个li的样式*/
+li:nth-child(2) {
+	background: #9BCD9B;
+}
+/*设置第三个li的样式*/
+li:nth-child(3) {
+	background: yellow;
+}
+/*设置button样式*/
+button {
+	width: 100px;
+	height: 50px;
+}
+/*设置button的父容器位置*/
+.button {
+	position: absolute;
+	bottom: 0px;
+}
+
+/*定义小男孩样式*/
+.character {
+	width: 150px;
+	height: 290px;
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	background: url(../images/boy.png) 0px -290px no-repeat;
+}
+
+.reset_Original {
+	background-position: -138px 0px;
+}
+
+/*定义走路动画每一帧*/
+@-webkit-keyframes person_slow {
+	0% {
+		background-position: 0px -290px;
+	}
+	25% {
+		background-position: -600px 0px;
+	}
+	50% {
+		background-position: -300px -290px;
+	}
+	75% {
+		background-position: -150px -290px;
+	}
+	100% {
+		background-position: 0px -290px;
+	}
+}
+@-moz-keyframes person_slow {
+	0% {
+		background-position: 0px -290px;
+	}
+	25% {
+		background-position: -600px 0px;
+	}
+	50% {
+		background-position: -300px -300px;
+	}
+	75% {
+		background-position: -150px -300px;
+	}
+	100% {
+		background-position: 0px -300px;
+	}
+}
+@-ms-keyframes person_slow {
+	0% {
+		background-position: 0px -290px;
+	}
+	25% {
+		background-position: -600px 0px;
+	}
+	50% {
+		background-position: -300px -300px;
+	}
+	75% {
+		background-position: -150px -300px;
+	}
+	100% {
+		background-position: 0px -300px;
+	}
+}
+
+/*设置走路动画样式规则*/
+.slow_Walk {
+	/*动画名称*/
+	animation-name: person_slow;
+	/*动画完成一个周期所花费的时间，默认0*/
+	animation-duration: 950ms;
+	/*动画播放次数，默认为1，infinite(无限次)*/
+	animation-iteration-count: infinite;
+	/*动画切换方式*/
+	animation-timing-function: steps(1,start);
+
+	-moz-animation-name: person_slow;			
+	-moz-animation-duration: 950ms;			
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: steps(1,start);
+
+	-webkit-animation-name: person_slow;			
+	-webkit-animation-duration: 950ms;			
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: steps(1,start);
+	
+	-ms-animation-name: person_slow;			
+	-ms-animation-duration: 950ms;			
+	-ms-animation-iteration-count: infinite;
+	-ms-animation-timing-function: steps(1,start);
+}
+
+/*动画暂停样式*/
+.pause_Walk {
+	animation-play-state: paused;
+}
+
+/*定义取花后的男孩走路动画的每一帧*/
+@-webkit-keyframes person_slow_with_flower {
+	0% {
+		background-position: -300px 0px;
+	}
+	25% {
+		background-position: -905px 0px;
+	}
+	50% {
+		background-position: -450px 0px;
+	}
+	75% {
+		background-position: -750px 0px;
+	}
+	100% {
+		background-position: -300px 0px;
+	}
+}
+@-moz-keyframes person_slow_with_flower {
+	0% {
+		background-position: -300px 0px;
+	}
+	25% {
+		background-position: -905px 0px;
+	}
+	50% {
+		background-position: -450px 0px;
+	}
+	75% {
+		background-position: -750px 0px;
+	}
+	100% {
+		background-position: -300px 0px;
+	}
+}
+@-ms-keyframes person_slow_with_flower {
+	0% {
+		background-position: -300px 0px;
+	}
+	25% {
+		background-position: -905px 0px;
+	}
+	50% {
+		background-position: -450px 0px;
+	}
+	75% {
+		background-position: -750px 0px;
+	}
+	100% {
+		background-position: -300px 0px;
+	}
+}
+
+/*设置取花后男孩的走路动画*/
+.walk_with_flower {
+	/*动画名称*/
+	animation-name: person_slow_with_flower;
+	/*动画完成一个周期所花费的时间，默认0*/
+	animation-duration: 950ms;
+	/*动画播放次数，默认为1，infinite(无限次)*/
+	animation-iteration-count: infinite;
+	/*动画切换方式*/
+	animation-timing-function: steps(1,start);
+
+	-moz-animation-name: person_slow_with_flower;			
+	-moz-animation-duration: 950ms;			
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: step-start;
+
+	-webkit-animation-name: person_slow_with_flower;			
+	-webkit-animation-duration: 950ms;			
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: step-start;
+	
+	-ms-animation-name: person_slow_with_flower;			
+	-ms-animation-duration: 950ms;			
+	-ms-animation-iteration-count: infinite;
+	-ms-animation-timing-function: step-start;
+}
+
+@keyframes boy-rotate {
+	0% {
+		background-position: -138px 0px;
+	}
+	20% {
+		background-position: -450px -288px;
+	}
+	40% {
+		background-position: 0px 0px;
+	}
+	60% {
+		background-position: -910px -288px;
+	}
+	80% {
+		background-position: -765px -288px;
+	}
+	100% {
+		background-position: -615px -290px;
+	}
+}
+.boy_rotate {
+	animation-name: boy-rotate;
+	animation-duration: 500ms;
+	animation-delay: 1s;
+	animation-timing-function: step-start;
+	animation-fill-mode: forwards;
+	
+	-webkit-animation-name: boy-rotate;
+	-webkit-animation-duration: 500ms;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-timing-function: step-start;
+	-webkit-animation-fill-mode: forwards;
+	
+	-moz-animation-name: boy-rotate;
+	-moz-animation-duration: 500ms;
+	-moz-animation-delay: 1s;
+	-moz-animation-timing-function: step-start;
+	-moz-animation-fill-mode: forwards;
+	
+	-ms-animation-name: boy-rotate;
+	-ms-animation-duration: 500ms;
+	-ms-animation-delay: 1s;
+	-ms-animation-timing-function: step-start;
+	-ms-animation-fill-mode: forwards;
+}
+
+/*飘花样式和动画*/
+.float_flower {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+@keyframes flower-roll {
+	0% {
+		bottom: 100%;
+	}
+	50% {
+		transform: rotate(1080deg);
+	}
+	100% {
+		transform: rotate(0deg) translate3d(50px,50px,50px);
+	}
+}
+.flower_roll {
+	position: absolute;
+	opacity: 0;
+	animation-name: flower-roll;
+	animation-duration: 20s;
+	
+	-webkit-animation-name: flower-roll;
+	-webkit-animation-duration: 20s;
+	
+	-moz-animation-name: flower-roll;
+	-moz-animation-duration: 20s;
+	
+	-ms-animation-name: flower-roll;
+	-ms-animation-duration: 20s;
+}

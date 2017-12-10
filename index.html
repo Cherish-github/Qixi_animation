@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+		<title>七夕主题</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/pageA.css">
+		<link rel="stylesheet" type="text/css" href="css/pageB.css">
+		<link rel="stylesheet" type="text/css" href="css/pageC.css">
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="http://ricostacruz.com/jquery.transit/jquery.transit.min.js"></script>
+		<script type="text/javascript" src="js/Swipe.js"></script>
+		<script type="text/javascript" src="js/Decorations.js"></script>
+		<script type="text/javascript" src="js/GirlWalk.js"></script>
+		<script type="text/javascript" src="js/BoyWalk.js"></script>
+
+	</head>
+	
+	<body>
+		<div id='content'>
+			<ul class='content_wrap'>
+				<!--页面1-->
+				<li>
+					<div class="a_background">
+						<div class="a_background_top"></div>
+						<div class="a_background_middle"></div>
+						<div class="a_background_bottom"></div>
+					</div>
+					<div id="sun"></div>
+					<div id="cloud_area">
+						<div class="cloud cloud1"></div>
+						<div class="cloud cloud2"></div>
+					</div>
+				</li>
+
+				<!--页面2-->
+				<li>
+					<div class="b_background">
+						<div class="b_background_top"></div>
+						<div class="b_background_top_preload"></div>
+						<div class="b_background_bottom"></div>
+					</div>
+					<div class="shop">
+						<div class="door">
+							<div class="door_left"></div>
+							<div class="door_right"></div>
+						</div>
+						<div class="lamp"></div>
+					</div>
+					<div class="bird"></div>
+				</li>
+				
+				<!--页面3-->
+				<li>
+					<div class="c_background">
+						<div class="c_background_top"></div>
+						<div class="c_background_middle"></div>
+						<div class="c_background_bottom"></div>
+					</div>
+					<div class="girl"></div>
+					<div class="bridge_bottom">
+						<div class="waters">
+							<div class="water_1"></div>
+							<div class="water_2"></div>
+							<div class="water_3"></div>
+							<div class="water_4"></div>
+						</div>
+					</div>
+					<ul class="stars">
+						<li class="star_1"></li>
+						<li class="star_2"></li>
+						<li class="star_3"></li>
+						<li class="star_4"></li>
+						<li class="star_5"></li>
+						<li class="star_6"></li>
+						<li class="star_7"></li>
+						<li class="star_8"></li>
+						<li class="star_9"></li>
+						<li class="star_10"></li>
+					</ul>
+				</li>
+
+			</ul>
+			<div id="boy" class="character"></div>
+			<div class="float_flower"></div>
+		</div>
+
+		<script type="text/javascript">
+
+			//获取div容器节点
+			var $container = $("#content");
+
+			//定义Swipe对象
+			var swipe = Swipe($container);
+			//页面滚动
+			function scroll_To(run_time,proportion){
+				var distX = $container.width() * proportion;
+				swipe.scrollTo(distX,run_time);
+			}
+
+			//页面滚动两个li页面，即位于第三个li页面
+			//swipe.scrollTo($container.width()*2,0);
+			
+			//定义Decorations对象
+			var decorations = Decorations();
+
+			//修正小女孩位置
+			var girl = GirlWalk();
+			girl.setOffset();
+
+			//定义BoyWalk对象
+			var boy = BoyWalk();
+			//boy.walkWithFlower();
+			/*
+			boy.walkTo(2000,0.15).then(function(){
+				var proportionY = girl.getTop() / $container.height();
+				return boy.walkTo(1500,0.3,proportionY);
+				}).then(function(){
+					var proportionX = (girl.getLeft() - boy.getBoyWidth() + boy.getBoyWidth() / 3) / $container.width();
+					return boy.walkTo(1500,proportionX);
+				}).then(function(){
+					boy.resetOriginal();
+				}).then(function(){
+					girl.rotate();
+					boy.rotate();
+				}).then(function(){
+					decorations.float_Flower();
+				}).then(function(){
+					decorations.music();
+				})
+*/
+			
+			$(function(){
+				
+
+				//添加飘云动画
+				$(".cloud1").addClass("cloud1_Anim");
+				$(".cloud2").addClass("cloud2_Anim");
+				
+				//添加音乐
+				decorations.music();
+				
+				//小男孩走到0.5路程时，页面开始滚动
+				boy.walkTo(6000,0.5).then(function(){
+					//添加太阳动画
+					$("#sun").addClass("rotation");
+					scroll_To(6000,1);
+				}).then(function(){
+					//同时小男孩继续往前走到第2个页面0.5处
+					return boy.walkTo(6000,0.5);
+				 }).then(function(){
+				 	//停止走路
+				 	boy.stopWalk();
+				 }).then(function(){
+					decorations.bird_Fly();
+				 	//开门
+				 	return decorations.door_Action('-51.5%','99%',1000);
+				 }).then(function(){
+				 	//开灯
+				 	decorations.lamp_Bright();
+				 }).then(function(){
+				 	//进店
+				 	return boy.toShop();
+				 }).then(function(){
+				 	//取花
+				 	return boy.takeFlower();
+				 }).then(function(){
+				 	//出店
+				 	return boy.outShop();
+				 }).then(function(){
+				 	//关门
+				 	return decorations.door_Action('-1%','50%',1000);
+				 }).then(function(){
+				 	//关灯
+				 	decorations.lamp_Dark();
+				 }).then(function(){
+				 	scroll_To(8000,2);
+				 }).then(function(){
+				 	//小男孩走到第3个页面
+				 	return boy.walkTo(8000,0.15);	
+				 }).then(function(){
+				 	//小男孩上桥
+				 	var proportionY = girl.getTop() / $container.height();
+				 	return boy.walkTo(1500,0.3,proportionY);
+				 }).then(function(){
+				 	//小男孩走到小女孩面前
+				 	var proportionX = (girl.getLeft() - boy.getBoyWidth() + boy.getBoyWidth() / 10.5) / $container.width();
+				 	return boy.walkTo(1500,proportionX);
+				 }).then(function(){
+				 	//小男孩停止走路
+				 	boy.resetOriginal();
+				 }).then(function(){
+				 	//男孩女孩转身
+				 	girl.rotate();
+				 	boy.rotate();
+				 }).then(function(){
+				 	//撒花
+				 	decorations.float_Flower();
+				 })
+					
+			});
+
+/*
+			$(".open_door").click(function(){
+				decorations.bird_Fly();
+				boy.walkTo(2000,0.5).then(function(){
+						boy.stopWalk();
+					}).then(function(){
+						//开门
+						return decorations.door_Action('-51.5%','99%',1000);
+					}).then(function(){
+						//开灯
+						decorations.lamp_Bright();
+					}).then(function(){
+						//进店
+						return boy.toShop();
+					}).then(function(){
+						//取花
+						return boy.takeFlower();
+					}).then(function(){
+						//出店
+						return boy.outShop();
+					}).then(function(){
+						//关门
+						return decorations.door_Action('-1%','50%',1000);
+					}).then(function(){
+						//关灯
+						decorations.lamp_Dark();
+					})
+			});
+			//$(".close_door").click(function(){
+			//	decorations.door_Action('-1%','50%',2000).then(function(){
+			//		decorations.lamp_Dark();
+			//	});
+			//})
+	*/		
+
+		</script>
+	</body>
+
+
+
+</html>

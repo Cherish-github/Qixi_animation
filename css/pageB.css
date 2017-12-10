@@ -1,0 +1,122 @@
+
+.b_background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.b_background_top {
+	width: 100%;
+	height: 73%;
+	background: url(../images/background/b_background_top_dark.png) no-repeat;
+	background-size: 100% 100%;
+}
+.b_background_top_preload {
+	width: 0%;
+	height: 0%;
+	background: url(../images/background/b_background_top_bright.png) no-repeat;
+}
+.b_background_bottom{
+	width: 100%;
+	height: 27%;
+	background: url(../images/background/b_background_bottom.png) no-repeat;
+	background-size: 100% 100%;
+}
+.lamp_bright {
+	background: url(../images/background/b_background_top_bright.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.shop {
+	position: absolute;
+	width: 40%;
+	height: 37%;
+	top: 36%;
+	left: 28.8%;
+}
+.door {
+	width: 32%;
+	height: 66%;
+	position: absolute;
+	top: 32.5%;
+	left: 58.5%;
+}
+.door_left,.door_right {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+}
+
+.door_left {
+	left: -1%;
+	width: 51.5%;
+	background: url(../images/door-left.png) no-repeat;
+	background-size: 100% 100%;
+}
+.door_right {
+	left: 50%;
+	background: url(../images/door-right.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.bird {
+	background: url(../images/bird.png) -182px 0px no-repeat;
+	position: absolute;
+	width: 91px;
+	height: 71px;
+	top: 10%;
+	right: 0%;
+}
+
+/*定义飞鸟每一帧动画*/
+@-webkit-keyframes bird_fly {
+	0% {
+		background-position: -182px 0px;
+	}
+	25% {
+		background-position: -91px 0px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	75% {
+		background-position: -91px 0px;
+	}
+	100% {
+		background-position: -182px 0px;
+	}
+}
+@-moz-keyframes bird_fly {
+	0% {
+		background-position: -182px 0px;
+	}
+	25% {
+		background-position: -91px 0px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	75% {
+		background-position: -91px 0px;
+	}
+	100% {
+		background-position: -182px 0px;
+	}
+}
+
+/*设置飞鸟动画*/
+.bird_fly {
+	animation-name: bird_fly;
+	animation-duration: 950ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: step-start;
+
+	-webkit-animation-name: bird_fly;
+	-webkit-animation-duration: 950ms;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: step-start;
+
+	-moz-animation-name: bird_fly;
+	-moz-animation-duration: 950ms;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: step-start;
+}
